@@ -1,0 +1,37 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <tr>
+    <th>Check</th>
+    <th>Title</th>
+    <th>User</th>
+    <th>Due date</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr>
+    <td><label><input type="checkbox" /></label></td>
+    <td><%= task.title %></td>
+    <td><%= task.user_id %></td>
+    <td><%= task.due_date %></td>
+    <td><%= task.priority %></td>
+    <td><%= link_to 'Show', task %></td>
+    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Task', new_task_path %>
+<%= link_to 'Back', users_path %><br>
+
+<%= link_to 'Sort By Title', tasks_path(order:"title") %><br>
+<%= link_to 'Sort By User', tasks_path(order:"user_id") %><br>
+<%= link_to 'Sort By Due date', tasks_path(order:"due_date") %><br>
+<%= link_to 'Sort By Priority', tasks_path(order:"priority") %>
