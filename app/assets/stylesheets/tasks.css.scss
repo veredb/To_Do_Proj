@@ -1,0 +1,27 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#wrapper{
+    width: 960px;
+   }
+
+h1{
+    
+    font-size: 30px;
+    color: red;
+    background-color: blue; padding: 20px;
+  }
+th{
+    text-align: left;
+    font-size: 15px;
+    color: blue;
+    padding-right: 2px;
+    margin-right: 40px;
+  }
+td{
+    width: 960px;
+    padding-right: 60px;
+    padding: 10px;
+    background-color: #e6e6fa;
+  }
