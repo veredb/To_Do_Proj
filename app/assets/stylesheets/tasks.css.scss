@@ -6,11 +6,18 @@
     width: 960px;
    }
 
-h1{
+#head{
     
-    font-size: 30px;
+  
     color: red;
-    background-color: blue; padding: 20px;
+    background-color: blue; padding: 20px; margin-bottom: 10px;
+
+  }
+h1{
+    font_size: 50px;
+  }
+#links{
+    font_size: 1px;
   }
 th{
     text-align: left;
