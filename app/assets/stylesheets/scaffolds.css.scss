@@ -19,9 +19,14 @@ pre {
 }
 
 a {
-  color: #000;
+  border-radius: 10px;
+  background-color:pink;
+  text-decoration:none;
+  padding-right:10px; padding-left:10px;
+  color:grey;
   &:visited {
-    color: #666;
+
+    color: #000;
   }
   &:hover {
     color: #fff;
