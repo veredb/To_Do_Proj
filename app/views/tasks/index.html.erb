@@ -1,5 +1,12 @@
-<h1>Listing tasks</h1>
-
+<div id="wrapper">
+<div id="head"><h1>Listing tasks</h1>
+<div id="links">
+<%= link_to 'Sort By Title', tasks_path(order:"title") %>
+<%= link_to 'Sort By User', tasks_path(order:"user_id") %>
+<%= link_to 'Sort By Due date', tasks_path(order:"due_date") %>
+<%= link_to 'Sort By Priority', tasks_path(order:"priority") %>
+</div>
+</div>
 <table>
   <tr>
     <th>Check</th>
@@ -35,3 +42,4 @@
 <%= link_to 'Sort By User', tasks_path(order:"user_id") %><br>
 <%= link_to 'Sort By Due date', tasks_path(order:"due_date") %><br>
 <%= link_to 'Sort By Priority', tasks_path(order:"priority") %>
+</div>
