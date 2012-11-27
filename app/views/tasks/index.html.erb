@@ -1,10 +1,18 @@
 <div id="wrapper">
 <div id="head"><h1>Listing tasks</h1>
 <div id="links">
-<%= link_to 'Sort By Title', tasks_path(order:"title") %>
-<%= link_to 'Sort By User', tasks_path(order:"user_id") %>
-<%= link_to 'Sort By Due date', tasks_path(order:"due_date") %>
-<%= link_to 'Sort By Priority', tasks_path(order:"priority") %>
+<%= link_to 'Sort By Title', user_tasks_path(order:"title") %>
+<%= link_to 'Sort By User', user_tasks_path(order:"user_id") %>
+<%= link_to 'Sort By Due date', user_tasks_path(order:"due_date") %>
+<%= link_to 'Sort By Priority', user_tasks_path(order:"priority") %>
+
+<%= form_tag user_tasks_path, :method => 'get' do %>
+   <p id="search">
+     <%= text_field_tag :search, params[:search] %>
+     <%= submit_tag 'Search', :title => nil %>
+   </p>
+<% end %>
+
 </div>
 </div>
 <table>
@@ -36,6 +44,7 @@
 <br />
 
 <%= link_to 'New Task', new_task_path %>
-<%= link_to 'Back', users_path %><br>
+<%= link_to 'Back', :back %><br>
+<%= link_to 'Users', users_path %>
 
 </div>
