@@ -2,13 +2,19 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.order(params[:order]).all
+   if params[:search] != ""
+    @tasks = Task.where("title = ?", params[:search])
+   else
+    @tasks = Task.order(params[:order]).where(:user_id => params[:user_id])
+   end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }
     end
+  # @tasks = Task.search(params[:search]).where(:conditions => ['title LIKE ?', "change oil"])
+  #  @tasks = Task.where("title = ?", params[:title])
+ #   Client.where("first_name LIKE '%#{params[:first_name]}%'")
   end
-
   # GET /tasks/1
   # GET /tasks/1.json
   def show
