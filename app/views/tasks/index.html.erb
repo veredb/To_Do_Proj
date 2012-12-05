@@ -9,7 +9,7 @@
 <%= form_tag user_tasks_path, :method => 'get' do %>
    <p id="search">
      <%= text_field_tag :search, params[:search] %>
-     <%= submit_tag 'Search', :title => nil %>
+     <%= submit_tag 'Search', :name => nil %>
    </p>
 <% end %>
 
@@ -43,7 +43,7 @@
 
 <br />
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_user_task_path(@user) %>
 <%= link_to 'Back', :back %><br>
 <%= link_to 'Users', users_path %>
 
