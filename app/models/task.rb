@@ -4,4 +4,6 @@ class Task < ActiveRecord::Base
   validates :title, :length => { :maximum => 140, :minimum => 2 }
   validates :user_id, :length => { :maximum => 4, :minimum => 1 }
   validates :priority, :length => { :maximum => 2, :minimum => 1 }
+
+
 end

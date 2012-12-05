@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-   if params[:search] != ""
+   @user = User.find(params[:user_id])
+   if params[:search]
     @tasks = Task.where("title = ?", params[:search])
    else
     @tasks = Task.order(params[:order]).where(:user_id => params[:user_id])
@@ -26,7 +27,8 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
-    @task = Task.new
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,11 +44,12 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(params[:task])
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.new(params[:task])
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to [@user, @task], notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -74,8 +77,11 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.find(params[:user_id])
+   # @task = Task.find(params[:id])
+   # @task.destroy
+     @user.tasks.destroy
 
     respond_to do |format|
       format.html { redirect_to tasks_url }
