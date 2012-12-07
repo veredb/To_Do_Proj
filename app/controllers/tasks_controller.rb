@@ -8,7 +8,7 @@ class TasksController < ApplicationController
    else
     @tasks = Task.order(params[:order]).where(:user_id => params[:user_id])
    end
-    respond_to do |format|
+    respond_to do |format|sk = Task.find(params[:user_id])
       format.html # index.html.erb
       format.json { render json: @tasks }
     end
@@ -16,6 +16,8 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @user = User.find(params[:user_id])
+   # @task = @user.task.find(params[:id])
     @task = Task.find(params[:id])
 
     respond_to do |format|
@@ -38,7 +40,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
+    @user = User.find(params[:user_id])
+    @task = @user.task.find(params[:id])
   end
 
   # POST /tasks
